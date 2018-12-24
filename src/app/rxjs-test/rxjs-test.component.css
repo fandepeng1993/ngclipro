@@ -1,0 +1,9 @@
+:host {
+  display: block;
+  border: 1px solid pink;
+  /*border-bottom-style: none;*/
+  background: aquamarine;
+}
+:host-context(.theme-light) h2 {
+  background-color: #eef;
+}

@@ -3,6 +3,51 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+  <ul>
+    <li *ngFor="let i of heroes">
+      {{i.name}}
+      <input [value]="i.name"
+             (input)="i.name=$event.target.value">
+    </li>
+    <p *ngIf="heroes.length>3">heros length > 3: {{heroes.length}}</p>
+    <p>The sum of 1 + 1 is not {{1 + 1 + getVal()}}</p>
+    <button (click)="deleteHero($event,'asdsad')">Delete hero</button>
+  </ul>
+  <form #heroForm="ngForm">
+    <input type="text" name="name" required>
+    <!--<input type="text" name="psd">-->
+    <!--<input type="button" value="按钮" (click)="onSubmit(heroForm, testdom)">-->
+    <button type="submit" [disabled]="!heroForm.form.valid">Submit</button>
+    <span #testdom class="testdom" sprefix="You are my" [class.special]="false" [ngClass]="{'class2':true}"
+          [attr.data-alise]="true" [ngStyle]="{'color':'blue'}" [style.fontSize]="'20px'">testdomtestdomtestdomtestdomtestdom</span>
+
+    <div>{{testP}}</div>
+    <div [innerHTML]="testP"></div>
+    <div class="bad curly special" [class]="'badCurly'">Bad curly 覆写</div>
+  </form>
+  <p>{{testBind}}</p>
+  <input type="text" [(ngModel)]="currentobj.name">
+  <input type="text" [(ngModel)]="currentteststring">
+  <p>{{currentobj.name}}{{currentteststring}}</p>
+  <app-test #appTest (from-child)="fatherFun($event)" [major]="major" [minor]="minor" [(test-bind)]="testBind" [currenttest]="currentobj" [(currentteststring)]="currentteststring"  (testfuncpar)="testfunc($event)"  [hero]="heroes[0]"></app-test>
+  <button (click)="watchCom(appTest)">查看子组件</button>
+  <br>
+  <input ref-fax placeholder="fax number" class="fax">
+  <button (click)="callFax(fax)">Fax</button>
+  <br>
+  <h2>Source code version</h2>
+  <button (click)="newMinor()">New minor version</button>
+  <button (click)="newMajor()">New major version</button>
+   <p>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</p>
+
+  <h2>Mission Control</h2>
+  <button (click)="announce()">Amission</button>
+  <app-rxjs-test class="app-rxjs-test" *ngFor="let bmission of bmissions"
+                 [bmission]="bmission"></app-rxjs-test>
+  <h3>History</h3>
+  <ul>
+    <li *ngFor="let event of history">{{event}}</li>
+  </ul>
+  <p>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</p>
 </div>
 

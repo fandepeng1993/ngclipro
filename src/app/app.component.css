@@ -1,0 +1,10 @@
+.testdom{
+  // 属性渐变
+  transition: all 2s linear;
+}
+ .app-rxjs-test{
+
+ }
+ .app-rxjs-test:last-child{
+   border-bottom: 1px solid pink;
+ }

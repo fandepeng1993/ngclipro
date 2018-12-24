@@ -1,0 +1,37 @@
+<div>
+  <p>apptest=============================================</p>
+  <input type="radio" name="aaa" value="red" [(ngModel)]="color">选项一
+  <input type="radio" name="aaa" value="yellow" [(ngModel)]="color">选项二
+  <input type="radio" name="aaa" value="cyan" [(ngModel)]="color">选项三
+  <p appHighlight [highlightColor]="color">
+    test works!
+  </p>
+  <input type="text" [(ngModel)]="currenttest.name">
+  <input type="text" [(ngModel)]="currentteststring" (ngModelChange)="changeNgmodel(currentteststring)">
+  <!--<input type="text" (ngModelChange)="changeNgmodel(currentteststring)" [(ngModel)]="currentteststring"  >-->
+  <!--<input type="text" [(ngModel)]="currentteststring" >-->
+  <div [hidden]="true">hideen</div>
+  <ul [ngSwitch]="'test1'">
+    <li *ngSwitchCase="'test1'">test1</li>
+    <li *ngSwitchCase="'test2'">test2</li>
+    <li *ngSwitchCase="'test3'">test3</li>
+    <li *ngSwitchDefault>test4</li>
+  </ul>
+  <button (click)="testbtn($event)">testbtn</button>
+  <input type="text" #phone placeholder="phone number">
+  <button (click)="callPhone(phone, phone.value)">Call</button>
+  <br>
+ <!-- <input type="text" #keydom (keyup.enter)="onkeyup($event)" (blur)="onkeyup($event)">-->
+  <input type="text" #keydom (keyup.enter)="update(keydom.value)" (blur)="update(keydom.value)">
+  <p>{{values}}</p>
+  <p>apptest================================================</p>
+
+  <p>test--------------------</p>
+  <h3>Version {{major}}.{{minor}}</h3>
+  <h4>Change log:</h4>
+  <ul>
+    <li *ngFor="let change of changeLog">{{change}}</li>
+  </ul>
+  <p>test--------------------</p>
+</div>
+
