@@ -3,6 +3,9 @@ import {Hero} from './hero';
 import {ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {TestComponent} from './test/test.component';
 import {MissionService} from './mission.service';
+import {AdService} from './ad.service';
+import {AdItem} from './ad-item';
+// import {fchmod} from 'fs';
 
 @Component({
   selector: 'app-root',
@@ -28,6 +31,7 @@ export class AppComponent {
   testBind: string;
   major: any;
   minor: any;
+  condition: false;
   @ViewChild('testdom') testdom: ElementRef;  // 获取组件的Dom
   // @ViewChild('appTest') appTest:
   // 父组件中获得子组件的引用
@@ -36,13 +40,16 @@ export class AppComponent {
   // @Input() currentteststring: string;
   @Input() testINdata: string;
   // @Output() testfuncpar: EventEmitter<any> = new EventEmitter();
-  constructor(private el: ElementRef, private renderer2: Renderer2, private missionService: MissionService) {
+  ads: AdItem[];
+  constructor(private el: ElementRef, private renderer2: Renderer2, private missionService: MissionService, private adService: AdService) {
     missionService.missionB$.subscribe(amission => {
-      // 订阅missionServiceb
+      // 订阅missionServiceb    当missionB改变了，就得到通知
       // console.log(amission)
       this.history.push(`${amission} confirmed the mission`);
     });
-
+    missionService.missionC$.subscribe(cmission => {
+      console.log(cmission);
+    });
     this.title = 'titles ngclipro';
     this.myHero = 'heros ngclipro';
     this.currentobj = {
@@ -69,16 +76,16 @@ export class AppComponent {
   }
 
   deleteHero(event: Event, id: string) {
-    console.log(event);
+   // console.log(event);
   }
 
   onSubmit(dom: Document, stestdom: Document) {
 
     this.renderer2.setStyle(this.el.nativeElement.querySelector('.testdom'), 'background', 'green');
-    console.dir(this.testdom.nativeElement.getAttribute('sprefix'));
+    /*console.dir(this.testdom.nativeElement.getAttribute('sprefix'));
     console.dir(this.testdom.nativeElement);
 
-    console.log(dom, this.el.nativeElement.querySelector('.testdom'), stestdom, '两种方式获取同一个dom');
+    console.log(dom, this.el.nativeElement.querySelector('.testdom'), stestdom, '两种方式获取同一个dom');*/
     setTimeout(() => {
       // this.renderer2.setStyle(this.testdom.nativeElement, 'background', 'red');
       this.renderer2.setStyle(stestdom, 'background', 'red');
@@ -87,13 +94,14 @@ export class AppComponent {
 
   ngOnInit() {
     this.testBind = '123123123';
+    this.ads = this.adService.getAds();
   }
 
   fatherFun(data, dd) {
-   console.log(data, dd);
+   //console.log(data, dd);
   }
   watchCom(dom: Document) {
-    console.log(123, this.appTest, dom);
+    //console.log(123, this.appTest, dom);
     this.appTest.greeting();
   }
   testfunc(a) {
@@ -105,7 +113,7 @@ export class AppComponent {
   }
   callFax(dom: Document) {
     // 三种方式获取dom
-   console.log(dom, this.Fax.nativeElement, this.el.nativeElement.querySelector('.fax'));
+   // console.log(dom, this.Fax.nativeElement, this.el.nativeElement.querySelector('.fax'));
   }
   newMinor() {
     this.minor++;

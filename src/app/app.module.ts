@@ -8,6 +8,9 @@ import { RxjsTestComponent } from './rxjs-test/rxjs-test.component';
 import { AdDirective } from './ad.directive';
 import { AdBannerComponent } from './ad-banner/ad-banner.component';
 import { HighlightDirective } from './highlight.directive';
+import { HeroJobAdComponent } from './hero-job-ad/hero-job-ad.component';
+import { HeroProfileComponent } from './hero-profile/hero-profile.component';
+import { UnlessDirective } from './unless.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,8 +18,12 @@ import { HighlightDirective } from './highlight.directive';
     RxjsTestComponent,
     AdDirective,
     AdBannerComponent,
-    HighlightDirective
+    HighlightDirective,
+    HeroJobAdComponent,
+    HeroProfileComponent,
+    UnlessDirective
   ],
+  entryComponents: [ HeroJobAdComponent, HeroProfileComponent ],
   imports: [
     BrowserModule,
     FormsModule

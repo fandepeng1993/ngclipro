@@ -1,9 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <ul>
+ <!-- <ul>
     <li *ngFor="let i of heroes">
       {{i.name}}
       <input [value]="i.name"
@@ -12,11 +9,11 @@
     <p *ngIf="heroes.length>3">heros length > 3: {{heroes.length}}</p>
     <p>The sum of 1 + 1 is not {{1 + 1 + getVal()}}</p>
     <button (click)="deleteHero($event,'asdsad')">Delete hero</button>
-  </ul>
-  <form #heroForm="ngForm">
+  </ul>-->
+  <!--<form #heroForm="ngForm">
     <input type="text" name="name" required>
-    <!--<input type="text" name="psd">-->
-    <!--<input type="button" value="按钮" (click)="onSubmit(heroForm, testdom)">-->
+    &lt;!&ndash;<input type="text" name="psd">&ndash;&gt;
+    &lt;!&ndash;<input type="button" value="按钮" (click)="onSubmit(heroForm, testdom)">&ndash;&gt;
     <button type="submit" [disabled]="!heroForm.form.valid">Submit</button>
     <span #testdom class="testdom" sprefix="You are my" [class.special]="false" [ngClass]="{'class2':true}"
           [attr.data-alise]="true" [ngStyle]="{'color':'blue'}" [style.fontSize]="'20px'">testdomtestdomtestdomtestdomtestdom</span>
@@ -25,8 +22,8 @@
     <div [innerHTML]="testP"></div>
     <div class="bad curly special" [class]="'badCurly'">Bad curly 覆写</div>
   </form>
-  <p>{{testBind}}</p>
-  <input type="text" [(ngModel)]="currentobj.name">
+  <p>{{testBind}}</p>-->
+  <!--<input type="text" [(ngModel)]="currentobj.name">
   <input type="text" [(ngModel)]="currentteststring">
   <p>{{currentobj.name}}{{currentteststring}}</p>
   <app-test #appTest (from-child)="fatherFun($event)" [major]="major" [minor]="minor" [(test-bind)]="testBind" [currenttest]="currentobj" [(currentteststring)]="currentteststring"  (testfuncpar)="testfunc($event)"  [hero]="heroes[0]"></app-test>
@@ -37,8 +34,8 @@
   <br>
   <h2>Source code version</h2>
   <button (click)="newMinor()">New minor version</button>
-  <button (click)="newMajor()">New major version</button>
-   <p>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</p>
+  <button (click)="newMajor()">New major version</button>-->
+  <!--<p>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</p>
 
   <h2>Mission Control</h2>
   <button (click)="announce()">Amission</button>
@@ -48,6 +45,12 @@
   <ul>
     <li *ngFor="let event of history">{{event}}</li>
   </ul>
-  <p>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</p>
+  <p>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</p>-->
+  <ng-template #tpl [ngIf]="true">
+    <span>I am span in template</span>
+  </ng-template>
+  <p *appUnless="condition">Show this sentence unless the condition is true.</p>
+  <template >asdasd</template>
+  <app-ad-banner [ads]="ads"></app-ad-banner>
 </div>
 

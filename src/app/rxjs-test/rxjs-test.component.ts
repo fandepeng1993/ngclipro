@@ -28,6 +28,10 @@ export class RxjsTestComponent implements OnInit, OnDestroy {
     this.missionService.BMission(this.bmission);
   }
 
+  modify() {
+    this.missionService.CMission({name: 'fdp'});
+  }
+
   ngOnDestroy() {
     // prevent memory leak when component destroyed
     this.subscription.unsubscribe();
@@ -38,7 +42,7 @@ export class RxjsTestComponent implements OnInit, OnDestroy {
     let test2 = '2';
     let test3 = '3';
     let myObservable = of(test1, test2, test3);
-    console.log(myObservable);
+   // console.log(myObservable);
 
     // 观察者对象
     const myObserver = {
@@ -46,7 +50,7 @@ export class RxjsTestComponent implements OnInit, OnDestroy {
       error: err => console.error('Observer got an error: ' + err),
       complete: () => console.log('Observer got a complete notification'),
     };
-    console.log(myObserver);
+    // console.log(myObserver);
     // 可观察对象订阅 观察者
     myObservable.subscribe(myObserver);
     setTimeout(() => {
